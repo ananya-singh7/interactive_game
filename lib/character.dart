@@ -1,6 +1,6 @@
-
-
 import 'package:flutter/material.dart';
+
+import 'avatar.dart';
 
 class character extends StatefulWidget {
   @override
@@ -28,17 +28,19 @@ class _characterState extends State<character> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
           Container(
-            margin: const EdgeInsets.all(15.0),
-            padding: const EdgeInsets.all(15.0),
+            margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 20.0),
+            padding: const EdgeInsets.all(10.0),
             child: Text("Choose Your Character",
               style: TextStyle(
                   fontFamily: 'Playfair Display',
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
           ),
           Container(
+              margin: const EdgeInsets.fromLTRB(15.0, 0.0, 25.0, 0.0),
+              //padding: const EdgeInsets.all(15.0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,14 +53,25 @@ class _characterState extends State<character> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  elevation: 15.0,
+                  elevation: 25.0,
                 ),
-                child: new Text("Mummy",
-                  style: TextStyle(fontSize: 10,
+                child: new Text("Mom",
+                  style: TextStyle(fontSize: 12,
                       color: Colors.white
                   ),
                 ),
-                onPressed: null,
+                  onPressed: () {
+                    setState(() {
+                      input = "Mom";
+                    });
+                    if(input == 'Mom')
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => avatar(),
+                        ),
+                      );
+                  },
               ),
               ),
 
@@ -69,14 +82,25 @@ class _characterState extends State<character> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    elevation: 15.0,
+                    elevation: 25.0,
                   ),
-                  child: new Text("Papa",
-                    style: TextStyle(fontSize: 10,
+                  child: new Text("Dad",
+                    style: TextStyle(fontSize: 12,
                         color: Colors.white
                     ),
                   ),
-                  onPressed: null,
+                    onPressed: () {
+                      setState(() {
+                        input = "Dad";
+                      });
+                      if(input == 'Dad')
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                          builder: (_) => avatar(),
+                        ),
+                      );
+                    },
                 ),
               ),
             ])
